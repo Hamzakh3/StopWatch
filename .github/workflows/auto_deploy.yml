@@ -25,12 +25,13 @@ jobs:
     - name: Installing Node
       uses: actions/setup-node@v2-beta
       with:
-        node version : 12
+        node-version : 12
 
     # Runs a set of commands using the runners shell
     - name: Installing Surge
       run: npm install -g surge
+
     - name: Deploy Website on Surge using Git Actions
-      run: surge http://mh-stop-watch.surge.sh/ --token ${{ secrets.SURGE_TOKEN }}
+      run: surge ./ http://mh-stop-watch.surge.sh/ --token ${{ secrets.SURGE_TOKEN }}
         echo Add other actions to build,
         echo test, and deploy your project.
