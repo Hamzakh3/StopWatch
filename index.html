@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch</title>
+    <link rel="stylesheet" href="./Assets/bootstrap-4.4.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./Assets/style.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row center">
+            <div class="col-6 tab" onclick="showStopWatch()">Stop Watch</div>
+            <div class="col-6 tab" onclick="showRecords()">Records</div>
+        </div>
+    </div>
+    <div class="container stopWatch" id="stopWatch">
+        <div class="time">
+            <h1 class="center">STOP WATCH</h1>
+        <div class="center timer">
+            <h2 class="digit">M</h2>
+            <h2 class="digit"> &nbsp;&nbsp;</h2>
+            <h2 class="digit">S</h2>
+            <h2 class="digit"> &nbsp;&nbsp;</h2>
+            <h2 class="digit">MS</h2>
+        </div>
+        <div class="center timer">
+            <h2 class="digit" id="min">00</h2>
+            <h2 class="digit">:</h2>
+            <h2 class="digit" id="sec">00</h2>
+            <h2 class="digit">:</h2>
+            <h2 class="digit" id="msec">00</h2>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <button class="btn btn-success" onclick="start()">Start</button>
+            </div>
+            <div class="col-4">
+                <button class="btn btn-danger" onclick="stop()">Stop</button>
+            </div>
+            <div class="col-4">
+                <button class="btn btn-secondary" onclick="reset()">Reset</button>
+            </div>
+        </div>
+    </div>
+    <div class="btnSaveTime" id='btnSaveTime'>
+        <button class="btn btn-primary" onclick="btnSaveTimeRec()">Save Time Record</button>
+    </div>
+
+    <div class="saveTimeForm" id="saveTimeForm">
+        <h3 class="center">We save your Time Records</h3>
+        <div>
+            <label for="nam">Name</label>
+            <input class="form" type="text" value="" id="nam" placeholder="Enter Name">
+        </div>
+        <div>
+            <label for="time">Time</label>
+            <input class="form" type="text" value="" id="time" readonly>
+        </div>
+        <div>
+            <button class="btn btn-primary" onclick="btnSave()">Save</button>
+        </div>
+    </div>
+
+</div>
+    <div class="container records" id="records">
+        <h1 class="center">Records</h1>
+    </div>
+
+</body>
+    <script src="./Assets/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="./Assets/bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>
+</html>
