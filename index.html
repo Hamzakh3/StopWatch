@@ -65,6 +65,18 @@
 </div>
     <div class="container records" id="records">
         <h1 class="center">Records</h1>
+        <table class="table-striped table-bordered table-hover table-dark" id="recordTable">
+            <tr class="tableHead">
+                <td>#</td>
+                <td>Name</td>
+                <td>Time Status</td>
+                <td>Action</td>
+            </tr>
+            
+        </table>
+        <br>
+        <h3 class="center noRecord" id="noRecord"> No Records Found</h3>
+        <button class="btn btn-info" onclick="clearAll()" id="clearAllBtn">Clear all Records</button>
     </div>
     <div class="center bg-light fixed-bottom">
         Created by Muhammd Hamza 2020

@@ -54,3 +54,28 @@ input{
 .records{
     display: none;
 }
+
+table{
+    width: 100%;
+    text-align: center;
+}
+.tableHead{
+    background-color: rgb(58, 58, 58) !important;
+    color: white !important;
+    font-size: 22px !important;
+}
+.tableHead td{
+    padding: 10px !important; 
+
+}
+
+.actionLink{
+    display: inline-block !important;
+    text-align: center !important;
+    margin: 5px;
+    width: 70px;
+}
+.noRecord{
+    color: rgb(58, 58, 58);
+    padding: 10px 5px;
+}

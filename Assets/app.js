@@ -16,6 +16,23 @@ var nam = document.getElementById('nam')
 var time = document.getElementById('time')
 var timeRec = []
 var interval;
+var getTime;
+var realData ;
+var recordTable = document.getElementById('recordTable')
+
+function getDataFromStorage(){
+    if(localStorage.hasOwnProperty('Time Record')){
+        var data = localStorage.getItem('Time Record')
+        realData = JSON.parse(data)
+        timeRec = realData
+        console.log(realData)
+    }
+    else{
+        localStorage.setItem('Time Record', JSON.stringify([]))
+    
+    }
+}
+getDataFromStorage();
 
 
 
@@ -38,7 +55,7 @@ function start(){
             s++
             sec.innerHTML = s
         }
-        else if(s == 5){
+        else if(s == 60){
             s = 0
             m++
             sec.innerHTML = s+1
@@ -58,6 +75,9 @@ function start(){
 function stop(){
     clearInterval(interval)
     console.log('Stop')
+    getTime = min.innerHTML + "m : " + sec.innerHTML + "s : " + msec.innerHTML +"ms"
+    time.value = getTime
+    console.log(time.value)
     btnStart.removeAttribute('disabled')
     btnStop.setAttribute('disabled', 'disabled')
     btnSaveTime.style.display = 'block'
@@ -91,5 +111,63 @@ function btnSaveTimeRec(){
 }
 
 function btnSave(){
-    console.log(nam.value, time.value)
+    if(nam.value !== ''){
+        console.log("Success")
+        realData = timeRec
+        timeRec.push({'Name': nam.value, 'Time' : getTime})
+        localStorage.setItem('Time Record', JSON.stringify(timeRec))
+        window.location.reload()
+    }
+    else{
+        alert ('Enter Name please!') 
+    }    
+}
+updateRecordData()
+function updateRecordData(){
+    // var lastIndex = realData.pop()
+    
+    realData.map((key, valu)=>{
+        recordTable.innerHTML += `
+        <tr class="">
+            <td>${valu+1}</td>
+            <td>${key.Name}</td>
+            <td>${key.Time}</td>
+            <td>
+                <ul>
+                    <li class="btn btn-sm btn-success actionLink" onclick="edit()" >Edit</li>
+                    <li class="btn btn-danger btn-sm actionLink" onclick="remove()" >Remove</li>
+                </ul>
+                
+            </td>
+        </tr>`
+    })
+    
+        
+    
+}
+// var edit = document.getElementById('edit')
+// var remo = document.getElementById('remove')
+
+function edit(){
+    alert('Edit Feature will add soon :)')
+    console.log('Edit')
+}
+
+function remove(){
+    alert('Remove Feature will add soon :)')
+    console.log('Remove')
+}
+var clearAllBtn = document.getElementById('clearAllBtn')
+var noRecord = document.getElementById('noRecord')
+if(realData.length == 0){
+    clearAllBtn.style.display = 'none'
+    noRecord.style.display = 'block'
+}
+else{
+    clearAllBtn.style.display = 'block'
+    noRecord.style.display = 'none'
+}
+function clearAll(){
+    localStorage.setItem('Time Record', JSON.stringify([]))
+    window.location.reload()
 }
